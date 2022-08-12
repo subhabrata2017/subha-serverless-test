@@ -1,0 +1,24 @@
+service: serverless-test
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  profile: default
+  stage: dev
+  region: ap-south-1
+  role: arn:aws:iam::019590226870:role/serverless-lambda-full
+
+functions:
+  FetchDataFunction:
+    handler: backend/getdata.getData
+    events:
+      - httpApi:
+          path: /getuser
+          method: get
+    environment:
+      endpoint: testslsdb.cmfm8xjjzbsp.ap-south-1.rds.amazonaws.com
+      dbname: testslsdb
+      username: subhaslsdb
+      dbPassword: thisismytestslsdb123
+      tableName: userTable

@@ -1,0 +1,2 @@
+- After pull do cd/backend
+- pip install --target $PWD PyMySQL
