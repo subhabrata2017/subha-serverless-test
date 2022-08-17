@@ -7,6 +7,7 @@ dbname = os.environ['dbname']
 username = os.environ['username']
 dbPassword = os.environ['dbPassword']
 tableName = os.environ['tableName']
+
 response = {
     "success": False,
     "data": []
@@ -21,10 +22,15 @@ except pymysql.MySQLError as e:
         "data": []
     }
 
-def getData(event, context):
-
+def getData():
+    
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM "+tableName)
+
+    if event["rawPath"] == "/getusers":
+        cursor.execute("SELECT * FROM "+tableName )
+    else:
+        cursor.execute("SELECT * FROM "+tableName+" WHERE empId="+event["pathParameters"]["empId"] )
+
     rows = cursor.fetchall()
     payload = []
     content = {}
@@ -44,4 +50,4 @@ def getData(event, context):
             "data": payload
         }       
     connection.commit()        
-    return response
+    return response    

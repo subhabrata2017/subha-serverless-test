@@ -14,8 +14,15 @@ functions:
     handler: backend/getdata.getData
     events:
       - httpApi:
-          path: /getuser
+          path: /getusers
           method: get
+      - httpApi:
+          path: /getuser/{empId}
+          method: get
+          request: 
+            parameters: 
+                paths: 
+                    empId: false
     environment:
       endpoint: testslsdb.cmfm8xjjzbsp.ap-south-1.rds.amazonaws.com
       dbname: testslsdb

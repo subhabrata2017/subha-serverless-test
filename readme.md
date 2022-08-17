@@ -1,2 +1,2 @@
-- After pull do cd/backend
-- pip install --target $PWD PyMySQL
+- After pull go to project folder
+- pip3 install --target $PWD requirements.txt
