@@ -22,7 +22,7 @@ except pymysql.MySQLError as e:
         "data": []
     }
 
-def getData():
+def getData(event, context):
     
     cursor = connection.cursor()
 
