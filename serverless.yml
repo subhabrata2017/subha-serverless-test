@@ -29,3 +29,15 @@ functions:
       username: subhaslsdb
       dbPassword: thisismytestslsdb123
       tableName: userTable
+  SetDataFunction:
+    handler: backend/setdata.setData
+    events:
+      - httpApi:
+          path: /setuser
+          method: post      
+    environment:
+      endpoint: testslsdb.cmfm8xjjzbsp.ap-south-1.rds.amazonaws.com
+      dbname: testslsdb
+      username: subhaslsdb
+      dbPassword: thisismytestslsdb123
+      tableName: userTable
